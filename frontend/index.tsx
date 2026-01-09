@@ -82,7 +82,7 @@ const INITIAL_COURTS: Court[] = [
     pricePerHour: 120,
     location: "Pro Gol, Dourados",
     imageUrl:
-      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=600",
+      "https://images.pexels.com/photos/13521967/pexels-photo-13521967.jpeg?_gl=1*hpvl5h*_ga*NjQyODc0NzgxLjE3Njc5MzE5NzI.*_ga_8JE65Q40S6*czE3Njc5MzE5NzIkbzEkZzEkdDE3Njc5MzE5ODAkajUyJGwwJGgw",
     rating: 4.5,
     available: true,
     ownerId: "owner1",
