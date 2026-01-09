@@ -58,12 +58,6 @@ TypeScript
 
 PostgreSQL (Banco de Dados Relacional)
 
-Arquitetura:
-
-MVC (Model-View-Controller) no Backend
-
-Componentização no Frontend
-
 # Layout e Design
 
 O projeto utiliza Tailwind CSS para garantir consistência visual.
