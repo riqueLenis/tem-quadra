@@ -16,7 +16,7 @@ import {
   Filter,
 } from "lucide-react";
 
-// --- Tipos e Interfaces ---
+//tipos e interface
 
 type SportType =
   | "futebol"
@@ -35,7 +35,7 @@ interface Court {
   imageUrl: string;
   rating: number;
   available: boolean;
-  ownerId: string; // Para vincular ao dono
+  ownerId: string; //para vincular ao dono
 }
 
 interface Booking {
@@ -49,7 +49,7 @@ interface Booking {
   };
 }
 
-// --- Dados Mockados (Simulação do Banco de Dados) ---
+//dados mock simulacao
 const INITIAL_COURTS: Court[] = [
   {
     id: "1",
@@ -101,9 +101,7 @@ const INITIAL_COURTS: Court[] = [
   },
 ];
 
-// --- Componentes ---
-
-// 1. Navbar
+//navbar
 const Navbar = ({
   onViewChange,
   currentView,
@@ -127,7 +125,6 @@ const Navbar = ({
             </span>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <button
@@ -151,7 +148,7 @@ const Navbar = ({
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/*mbbile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -167,7 +164,7 @@ const Navbar = ({
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/*mobile menu */}
       {isOpen && (
         <div className="md:hidden bg-emerald-800">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -205,21 +202,17 @@ const Navbar = ({
   );
 };
 
-// 2. Hero Section (Modificado para Full Width Rectangular)
+//hero section
 const Hero = ({ onCtaClick }: { onCtaClick: () => void }) => (
   <div className="relative w-full h-[50vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] flex items-center justify-center bg-gray-900 overflow-hidden">
-    {/* Imagem de Fundo Full Screen/Retangular */}
     <div className="absolute inset-0">
       <img
         className="w-full h-full object-cover"
         src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=1600"
         alt="Quadra de esportes"
       />
-      {/* Overlay Escuro para leitura do texto */}
       <div className="absolute inset-0 bg-black/60"></div>
     </div>
-
-    {/* Conteúdo Centralizado */}
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl drop-shadow-lg">
         <span className="block">O jogo não pode parar.</span>
@@ -241,7 +234,7 @@ const Hero = ({ onCtaClick }: { onCtaClick: () => void }) => (
   </div>
 );
 
-// 3. Search & List View
+//search e list view
 const SearchView = ({
   courts,
   onBook,
@@ -273,7 +266,6 @@ const SearchView = ({
   return (
     <div className="bg-gray-50 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Filtros Mobile e Desktop */}
         <div className="mb-8 space-y-4">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -305,7 +297,7 @@ const SearchView = ({
           </div>
         </div>
 
-        {/* Grid de Quadras */}
+        {/* grid de quadras */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourts.map((court) => (
             <div
@@ -368,7 +360,7 @@ const SearchView = ({
   );
 };
 
-// 4. Booking Modal
+//booking modal
 const BookingModal = ({
   court,
   onClose,
@@ -536,7 +528,7 @@ const BookingModal = ({
   );
 };
 
-// 5. Admin Dashboard
+//admin dashboard
 const AdminDashboard = ({
   courts,
   onAddCourt,
@@ -553,7 +545,7 @@ const AdminDashboard = ({
     pricePerHour: 0,
     location: "",
     imageUrl:
-      "https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80&w=600", // Default image
+      "https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80&w=600",
   });
 
   const handleAddSubmit = (e: React.FormEvent) => {
@@ -710,7 +702,7 @@ const AdminDashboard = ({
   );
 };
 
-// --- App Container ---
+//app container
 
 export default function App() {
   const [view, setView] = useState("home");
@@ -794,7 +786,7 @@ export default function App() {
         />
       )}
 
-      {/* Toast Notification */}
+      {/* toast notification */}
       {toast && (
         <div className="fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-xl animate-bounce flex items-center z-50">
           <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
