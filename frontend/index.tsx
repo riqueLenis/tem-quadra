@@ -56,7 +56,7 @@ const INITIAL_COURTS: Court[] = [
     name: "Arena Gol de Placa",
     sport: "society",
     pricePerHour: 150,
-    location: "Pro Gol, Dourados",
+    location: "Arena, Dourados",
     imageUrl:
       "https://quadrasimperial.com.br/wp-content/uploads/2024/02/campo-grama-sintetica-4.jpg",
     rating: 4.8,
@@ -68,7 +68,7 @@ const INITIAL_COURTS: Court[] = [
     name: "Beach Point Tatuapé",
     sport: "beachtennis",
     pricePerHour: 100,
-    location: "Pro Gol, Dourados",
+    location: "Arena, Dourados",
     imageUrl:
       "https://m.ahstatic.com/is/image/accorhotels/beach-tennis-2024-1:16by9?fmt=webp&op_usm=1.75,0.3,2,0&resMode=sharp2&iccEmbed=true&icc=sRGB&dpr=on,1.3&wid=1459&hei=820&qlt=80",
     rating: 4.9,
@@ -80,7 +80,7 @@ const INITIAL_COURTS: Court[] = [
     name: "Ginásio do Bairro",
     sport: "futsal",
     pricePerHour: 120,
-    location: "Pro Gol, Dourados",
+    location: "Arena, Dourados",
     imageUrl:
       "https://images.pexels.com/photos/13521967/pexels-photo-13521967.jpeg?_gl=1*hpvl5h*_ga*NjQyODc0NzgxLjE3Njc5MzE5NzI.*_ga_8JE65Q40S6*czE3Njc5MzE5NzIkbzEkZzEkdDE3Njc5MzE5ODAkajUyJGwwJGgw",
     rating: 4.5,
@@ -92,7 +92,7 @@ const INITIAL_COURTS: Court[] = [
     name: "Vôlei Sand Club",
     sport: "volei",
     pricePerHour: 90,
-    location: "Pro Gol, Dourados",
+    location: "Arena, Dourados",
     imageUrl:
       "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&q=80&w=600",
     rating: 4.7,
