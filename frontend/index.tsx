@@ -16,6 +16,8 @@ import {
   Filter,
 } from "lucide-react";
 
+import PartnerLogin from "./login";
+
 //tipos e interface
 
 type SportType =
@@ -104,9 +106,11 @@ const INITIAL_COURTS: Court[] = [
 //navbar
 const Navbar = ({
   onViewChange,
+  onPartnerClick,
   currentView,
 }: {
   onViewChange: (view: string) => void;
+  onPartnerClick: () => void;
   currentView: string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -140,7 +144,7 @@ const Navbar = ({
                 Buscar Quadras
               </button>
               <button
-                onClick={() => onViewChange("admin")}
+                onClick={onPartnerClick}
                 className="bg-yellow-500 hover:bg-yellow-600 text-emerald-900 px-4 py-2 rounded-md font-bold transition"
               >
                 Sou Parceiro
@@ -188,7 +192,7 @@ const Navbar = ({
             </button>
             <button
               onClick={() => {
-                onViewChange("admin");
+                onPartnerClick();
                 setIsOpen(false);
               }}
               className="block w-full text-left px-3 py-2 rounded-md bg-yellow-500 text-emerald-900 font-bold mt-4"
@@ -706,10 +710,19 @@ const AdminDashboard = ({
 
 export default function App() {
   const [view, setView] = useState("home");
+  const [partnerLoggedIn, setPartnerLoggedIn] = useState(false);
   const [courts, setCourts] = useState<Court[]>(INITIAL_COURTS);
   const [selectedCourt, setSelectedCourt] = useState<Court | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [toast, setToast] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      setPartnerLoggedIn(localStorage.getItem("partnerLoggedIn") === "1");
+    } catch {
+      // ignore
+    }
+  }, []);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -740,7 +753,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans text-gray-900">
-      <Navbar onViewChange={setView} currentView={view} />
+      <Navbar
+        onViewChange={setView}
+        onPartnerClick={() => setView(partnerLoggedIn ? "admin" : "login")}
+        currentView={view}
+      />
 
       {view === "home" && (
         <>
@@ -770,12 +787,44 @@ export default function App() {
         <SearchView courts={courts} onBook={handleBooking} />
       )}
 
-      {view === "admin" && (
-        <AdminDashboard
-          courts={courts}
-          onAddCourt={handleAddCourt}
-          onDeleteCourt={handleDeleteCourt}
+      {view === "login" && (
+        <PartnerLogin
+          onBack={() => setView("home")}
+          onSuccess={() => {
+            try {
+              localStorage.setItem("partnerLoggedIn", "1");
+            } catch {
+              // ignore
+            }
+            setPartnerLoggedIn(true);
+            showToast("Login realizado!");
+            setView("admin");
+          }}
         />
+      )}
+
+      {view === "admin" && (
+        partnerLoggedIn ? (
+          <AdminDashboard
+            courts={courts}
+            onAddCourt={handleAddCourt}
+            onDeleteCourt={handleDeleteCourt}
+          />
+        ) : (
+          <PartnerLogin
+            onBack={() => setView("home")}
+            onSuccess={() => {
+              try {
+                localStorage.setItem("partnerLoggedIn", "1");
+              } catch {
+                // ignore
+              }
+              setPartnerLoggedIn(true);
+              showToast("Login realizado!");
+              setView("admin");
+            }}
+          />
+        )
       )}
 
       {selectedCourt && (
